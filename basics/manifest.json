@@ -1,0 +1,10 @@
+{
+  "name": "getting started",
+  "description": "getting started",
+  "version": "1.0",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "hi.html",
+    "default_icon": "hi.png"
+  }
+}
