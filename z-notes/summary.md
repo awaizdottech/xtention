@@ -5,7 +5,7 @@ facts about the extension manifest
 - The only required keys are "manifest_version", "name", and "version".
 - Required value 'version' is missing or invalid. It must be between 1-4 dot-separated integers each between 0 and 65536.
 - Missing 'manifest_version' key. Its value must be an integer either 2 or 3. See developer.chrome.com/extensions/manifestVersion for details. Could not load manifest.
-- icons are optional during development, they are required if you plan to distribute your extension on the Chrome Web Store. using PNG files recommend, but other file formats are allowed, except for SVG files.
+- icons are optional during development, they are required if you plan to distribute your extension on the Chrome Web Store. using PNG files recommended, but other file formats are allowed, except for SVG files.
 
 ````Icon size | Icon use
 16x16 |	Favicon on the extension's pages and context menu.
@@ -23,6 +23,9 @@ facts about the extension manifest
   Other extension HTML pages | No
 ````
 
+- Service workers are special JavaScript environments that handle events and terminate when they're not needed.
+- Opening the service worker in the devtools will keep it active. To make sure that your extension behaves correctly when your service worker is terminated, remember to close DevTools.
+
 ```
 
 Key point: Update chrome types npm package frequently to work with the latest Chromium version.
@@ -30,13 +33,13 @@ Key point: Update chrome types npm package frequently to work with the latest Ch
 
 - Match patterns consist of three parts: <scheme>://<host><path>. They can contain '\*' characters.
 - Extensions can use the Storage API and IndexedDB to store the application state.
-- The activeTab permission grants the extension temporary ability to execute code on the active tab. It also allows access to sensitive properties of the current tab.
+- The activeTab permission grants the extension temporary ability to execute code on the active tab when the user invokes the extension - for example by clicking its action. It also allows access to sensitive properties of the current tab.
 
 This permission is enabled when the user invokes the extension. In this case, the user invokes the extension by clicking on the extension action.
 
 💡 What other user interactions enable the activeTab permission in my own extension?
 
-Pressing a keyboard shortcut combination.c
+Pressing a keyboard shortcut combination.
 Selecting a context menu item.
 Accepting a suggestion from the omnibox.
 Opening an extension popup.
